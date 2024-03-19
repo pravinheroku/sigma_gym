@@ -1,0 +1,79 @@
+{% extends 'base.html' %} 
+{% block title %} Profile {% endblock %} 
+{% block head %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h1>Enrollment Details</h1>
+      {% for post in posts %}
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-action list-group-item-dark">
+          <h5>Name: {{ post.full_name }}</h5>
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-dark">
+          <h5>Email: {{ post.email }}</h5>
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-dark">
+          <h5>Gender: {{ post.gender }}</h5>
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-dark">
+          <h5>Phone No.: {{ post.phonenumber }}</h5>
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-dark">
+          <h5>DOB: {{ post.dob }}</h5>
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-dark">
+          <h5>Membership Plan: {{ post.select_membership_plan }}</h5>
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-dark">
+          <h5>Trainer: {{ post.select_trainer }}</h5>
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-dark">
+          <h5>Reference: {{ post.reference }}</h5>
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-dark">
+          <h5>Payment Status: {{ post.payment_status }}</h5>
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-dark">
+          <h5>Amount Paid: {{ post.payment_amount }}</h5>
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-dark">
+          <h5>Upcoming Due Date: {{ post.due_date }}</h5>
+        </li>
+        <li class="list-group-item list-group-item-action list-group-item-dark">
+          <h5>Joining Date: {{ post.time_stamp }}</h5>
+        </li>
+      </ul>
+      {% endfor %}
+    </div>
+    <div class="col-md-4">
+      <div><center><h1>Attendance Data</h1></center></div>
+      <table class="table mt-3">
+        <thead class="thead-warning">
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Login Time</th>
+            <th scope="col">Logout Time</th>
+            <th scope="col">Workout</th>
+            <th scope="col">Trained By</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          {% for attend in attendance %}
+          <tr>                        
+            <td>{{attend.Selectdate}}</td>     
+            <td>{{attend.Login}}</td>     
+            <td>{{attend.Logout}}</td>     
+            <td>{{attend.SelectWorkout}}</td>     
+            <td>{{attend.TrainedBy}}</td>     
+          </tr>
+          {% endfor %}   
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

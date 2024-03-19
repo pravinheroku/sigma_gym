@@ -46,25 +46,32 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto active" href="/">Home</a></li>
-          <li><a class="nav-link scrollto" href="/about">About</a></li>
-          <li><a class="nav-link scrollto" href="/services">Services</a></li>
-          <li><a class="nav-link scrollto " href="/gallery">Gallery</a></li>
+          <li><a class="nav-link scrollto" href="/ABOUT">About</a></li>
+          <li><a class="nav-link scrollto" href="/SERVICE">Services</a></li>
+          <li><a class="nav-link scrollto " href="/GALLERY">Gallery</a></li>
           <li><a class="nav-link scrollto" href="/contact">Contact</a></li>
           <li class="dropdown"><a href="#"><span>Memberships</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Enroll</a></li>
-              <li><a href="#">Workouts</a></li>
-              <li><a href="#">Tracker</a></li>
-              <li><a href="#">View Profile</a></li>
+              <li><a href="/join">Enroll</a></li>
+              <li><a href="/attendance">Workouts</a></li>
+              {% comment %} <li><a href="#">Tracker</a></li> {% endcomment %}
+              <li><a href="/profile">View Profile</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="/signin">Sign in</a></li>
+
+          {% if not request.user.is_authenticated %}                    
+          <li><a class="nav-link scrollto" href="/signup">Log in&nbsp&nbsp&nbsp&nbsp</a></li>
+          <a href="/achivements" class="get-started-btn scrollto">Gym Awards&nbsp&nbsp&nbsp&nbsp&nbsp</a>          
+          {% else %}
+          <li><a class="nav-link scrollto" href="/logout">Log out</a></li>          
+          {% endif %}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="/achivements" class="get-started-btn scrollto">Gym Awards</a>
-
+      {% if  request.user.is_authenticated %}
+      <a href="/" class="get-started-btn scrollto">Welcome</a>
+      {% endif %}
     </div>
   </header><!-- End Header -->
 
@@ -74,7 +81,7 @@
 
       <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
         <div class="col-xl-6 col-lg-8">
-          <h1>The only bad workout is the one that didn't happen<span>.</span></h1>
+          <h1 >The only bad workout is the one that didn't happen<span>.</span></h1>
           <h2>Join Sigma</h2>
         </div>
       </div>
